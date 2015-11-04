@@ -1,0 +1,31 @@
+<assembly>
+    <id>dist</id>
+    <formats>
+        <format>dir</format>
+    </formats>
+
+	<includeBaseDirectory>false</includeBaseDirectory>
+
+    <fileSets>
+        <!--
+           Adds startup scripts to the root directory of zip package. The startup
+           scripts are located to src/main/scripts directory as stated by Maven
+           conventions.
+       -->
+        <fileSet>
+            <directory>${project.build.scriptSourceDirectory}</directory>
+            <outputDirectory></outputDirectory>
+            <includes>
+                <include>hivesync</include>
+            </includes>
+        </fileSet>
+        <!-- adds jar package to the root directory of zip package -->
+        <fileSet>
+            <directory>${project.build.directory}</directory>
+            <outputDirectory></outputDirectory>
+            <includes>
+                <include>hive-metastore-sync*.jar</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>

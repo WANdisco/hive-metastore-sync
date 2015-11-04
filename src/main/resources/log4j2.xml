@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+	<Appenders>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="[%-5level] %d{HH:mm:ss.SSS} [%t] %c{1} : %msg%n" />
+		</Console>
+
+		<File name="FILE" fileName="/tmp/hive-metastore-sync.txt" append="false">
+			<PatternLayout
+				pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} : %msg%n" />
+		</File>
+
+	</Appenders>
+	<Loggers>
+		<Root level="all" additivity="true">
+			<AppenderRef ref="FILE" level="all" />
+		</Root>
+		<Logger level="all" name="com.wandisco">
+			<AppenderRef ref="STDOUT" level="debug" />
+		</Logger>
+	</Loggers>
+</Configuration>
