@@ -18,7 +18,7 @@ cd tests
 ## Creating test boxes with vagrant-lxc
 
 To simplify the testing process, there is a vagrant-lxc template which could be used to create box1 and box2.
-You have to install vagrant and vagrant-lxc plugin to use it. Then run the following commands:
+You have to install vagrant (https://www.vagrantup.com) and vagrant-lxc plugin (https://github.com/fgrehm/vagrant-lxc) to use it. Then run the following commands:
 
 ```
 cd vagrant/lxc
