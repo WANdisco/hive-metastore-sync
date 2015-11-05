@@ -33,10 +33,12 @@ public class AbstractSuite {
 	@BeforeSuite
 	public void setupSuite(String host1, String port1, String user1, String pass1, String host2, String port2,
 			String user2, String pass2, String hadoopHome, String hiveHome) throws Exception {
-		runHadoop(host1, hadoopHome, user1, pass1);
-		runHadoop(host2, hadoopHome, user2, pass2);
-		runHive(host1, port1, hiveHome, user1, pass1);
-		runHive(host2, port2, hiveHome, user2, pass2);
+		if (!"true".equals(System.getProperty("skipStart"))) {
+			runHadoop(host1, hadoopHome, user1, pass1);
+			runHadoop(host2, hadoopHome, user2, pass2);
+			runHive(host1, port1, hiveHome, user1, pass1);
+			runHive(host2, port2, hiveHome, user2, pass2);
+		}
 		url1 = "jdbc:hive2://" + host1 + ":" + port1;
 		url2 = "jdbc:hive2://" + host2 + ":" + port2;
 		con1 = Tools.createNewConnection(url1, user1, pass1);
@@ -177,7 +179,7 @@ public class AbstractSuite {
 	public static String getUrl1() {
 		return url1;
 	}
-	
+
 	public static String getUrl2() {
 		return url2;
 	}
