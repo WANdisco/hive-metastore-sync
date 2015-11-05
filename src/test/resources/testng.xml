@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Suite" verbose="2">
-	<parameter name="box1" value="box1" />
+	<parameter name="box1_host" value="box1" />
 	<parameter name="box1_user" value="vagrant" />
 	<parameter name="box1_password" value="vagrant" />
-	<parameter name="box1_connect" value="jdbc:hive2://box1:10000" />
-	<parameter name="box2" value="box2" />
+	<parameter name="box1_jdbc_port" value="10000" />
+	<parameter name="box2_host" value="box2" />
 	<parameter name="box2_user" value="vagrant" />
 	<parameter name="box2_password" value="vagrant" />
-	<parameter name="box2_connect" value="jdbc:hive2://box2:10000" />
+	<parameter name="box2_jdbc_port" value="10000" />
+	<parameter name="hadoop_home" value="/usr/local/hadoop-2.6.0" />
+	<parameter name="hive_home" value="/usr/local/apache-hive-1.2.1-bin" />
 	<test name="Test1">
 		<classes>
 			<class name="test.java.AbstractSuite" />

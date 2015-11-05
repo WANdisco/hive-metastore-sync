@@ -115,6 +115,11 @@
 			<version>6.9.4</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.hierynomus</groupId>
+			<artifactId>sshj</artifactId>
+			<version>0.14.0</version>
+		</dependency>
 	</dependencies>
 	<repositories>
 		<repository>
