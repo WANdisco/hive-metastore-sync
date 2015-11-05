@@ -8,13 +8,19 @@ mvn clean package -DskipTests
 ```
 
 ## How to test?
-* Create two single-node clusters with hadoop and hive. Expected host names: box1 & box2
-* Start hadoop and hive on each one
+* Create two single-node clusters, expected host names: box1 & box2
+* Install hadoop and hive on each one
 * Run the tests:
 
 ```
 mvn test
 ```
+
+Test suite starts/restarts hadoop and hive every time you run it. You can cut this time by specifying parameter ```skipStart```:
+
+```
+mvn test -DskipStart=true
+````
 
 ## Creating test boxes with vagrant-lxc
 
