@@ -2,8 +2,10 @@
 Replicate hive metastore from the cluster to another one
 
 ## How to build?
-Run maven as following:
-```mvn clean package -DskipTests```
+* Run maven build:
+```
+mvn clean package -DskipTests
+```
 
 ## How to test?
 * Create two single-node clusters with hadoop and hive. Expected host names: box1 & box2
