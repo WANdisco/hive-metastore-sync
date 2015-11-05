@@ -62,7 +62,7 @@ public abstract class Commands {
 		LOG.debug("- drop existing table keeping data");
 		Commands.executeQuery(con, "DROP TABLE " + dst.getName(), dryRun);
 		LOG.debug("- create table");
-		createTableWithPartitions(con, dst, fs1, fs2, dryRun);
+		createTableWithPartitions(con, src, fs1, fs2, dryRun);
 
 		if (src.isManaged()) {
 			LOG.debug("- change table to managed");
