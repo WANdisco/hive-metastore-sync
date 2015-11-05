@@ -27,12 +27,6 @@ vagrant up
 ```
 
 This command creates and runs two containers: box1 and box2, both provisioned with hadoop and hive.
-To setup a password-less ssh access:
-
-```
-ssh-copy-id vagrantbox1
-ssh-copy-id vagrant@box2
-```
 
 To remove created containers use ```destroy```:
 
