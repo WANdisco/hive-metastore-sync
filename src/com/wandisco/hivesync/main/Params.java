@@ -34,10 +34,13 @@ public class Params {
 
 	@Parameter(names = "-dstPass", description = "Password")
 	private String dstPass;
-	
-	@Parameter(names = "-database", description = "Database (comma-separated list with wildcards)")
+
+	@Parameter(names = "-database", description = "Database(s), comma-separated list with wildcards")
 	private List<String> databases = new ArrayList<>(Arrays.asList("default"));
-	
+
+	@Parameter(names = "-dryRun", description = "Don't run, but output commands to the specified file")
+	private String dryRunFile = null;
+
 	public Boolean getHelp() {
 		return help;
 	}
@@ -45,11 +48,11 @@ public class Params {
 	public String getSrc() {
 		return src;
 	}
-	
+
 	public String getSrcUser() {
 		return srcUser;
 	}
-	
+
 	public String getSrcPass() {
 		return srcPass;
 	}
@@ -57,17 +60,21 @@ public class Params {
 	public String getDst() {
 		return dst;
 	}
-	
+
 	public String getDstUser() {
 		return dstUser;
 	}
-	
+
 	public String getDstPass() {
 		return dstPass;
 	}
-	
+
 	public List<String> getDatabases() {
 		return databases;
+	}
+
+	public String getDryRunFile() {
+		return dryRunFile;
 	}
 
 }

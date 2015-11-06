@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Suite" verbose="2">
 	<parameter name="box1_host" value="box1" />
 	<parameter name="box1_user" value="vagrant" />
@@ -13,8 +14,9 @@
 	<test name="Test1">
 		<classes>
 			<class name="test.java.AbstractSuite" />
-			<class name="test.java.Basic" />
-			<class name="test.java.Databases" />
+			<class name="test.java.CommandsTest" />
+			<class name="test.java.BasicTest" />
+			<class name="test.java.DatabasesTest" />
 		</classes>
-	</test> <!-- Test -->
-</suite> <!-- Suite -->
+	</test>
+</suite>

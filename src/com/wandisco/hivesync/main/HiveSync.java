@@ -60,11 +60,11 @@ public class HiveSync {
 	private void syncDatabase(String database, String fs1, String fs2) throws Exception {
 		LOG.trace("Collect table information");
 		
-		Commands.useDatabase(con1, database);
-		Commands.useDatabase(con2, database);
+//		Commands.useDatabase(con1, database);
+//		Commands.useDatabase(con2, database);
 		
-		List<TableInfo> srcTables = Commands.getTables(con1);
-		List<TableInfo> dstTables = Commands.getTables(con2);
+		List<TableInfo> srcTables = Commands.getTables(con1, database);
+		List<TableInfo> dstTables = Commands.getTables(con2, database);
 
 		for (TableInfo srcTable : srcTables) {
 			TableInfo dstTable = findTable(dstTables, srcTable.getName());

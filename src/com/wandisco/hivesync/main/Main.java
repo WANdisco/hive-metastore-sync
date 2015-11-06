@@ -1,6 +1,9 @@
 package com.wandisco.hivesync.main;
 
+import java.io.File;
+
 import com.beust.jcommander.JCommander;
+import com.wandisco.hivesync.hive.Commands;
 
 /**
  * 
@@ -20,6 +23,10 @@ public class Main {
 			jce.usage();
 			return;
 		}
+
+		// Delete dryRun file
+		Commands.setDryRunFile(p.getDryRunFile());
+		(new File(p.getDryRunFile())).delete();
 
 		HiveSync hs = new HiveSync(p.getSrc(), p.getSrcUser(), p.getSrcPass(), p.getDst(), p.getDstUser(),
 				p.getDstPass(), p.getDatabases());
