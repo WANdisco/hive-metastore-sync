@@ -22,6 +22,18 @@ Test suite starts/restarts hadoop and hive every time you run it. You can cut th
 mvn test -DskipStart=true
 ````
 
+##Running hive-metastore-sync
+
+To run hive-metastore-sync from shell:
+
+```
+<install-dir>/bin/hivesync [parameters]
+```
+
+##Configuration
+Log4j2 configuration is stored in <install-dir>/conf/log4j2.xml
+The default configuration file produces log file ```/tmp/hive-metastore-sync.txt```
+
 ## Creating test boxes with vagrant-lxc
 
 To simplify the testing process, there is a vagrant-lxc template which could be used to create box1 and box2.
