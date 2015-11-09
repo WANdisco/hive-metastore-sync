@@ -7,6 +7,11 @@ Replicate hive metastore from the cluster to another one
 mvn clean package -DskipTests
 ```
 
+Maven will produce two results:
+
+1. directory ```target/hive-metastore-sync-<version>/```
+2. zip archive ```target/hive-metastore-sync-<version>.zip```
+
 ## How to test?
 * Create two single-node clusters, expected host names: box1 & box2
 * Install hadoop and hive on each one
