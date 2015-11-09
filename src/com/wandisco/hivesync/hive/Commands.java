@@ -201,4 +201,9 @@ public abstract class Commands {
 		return Commands.forceExecuteQuery(connection, "SHOW DATABASES LIKE '" + pattern + "'");
 	}
 
+	public static void createDatabase(Connection con, String db) throws Exception {
+		LOG.trace("Creating database");
+		executeQuery(con, "CREATE DATABASE " + db);
+	}
+
 }

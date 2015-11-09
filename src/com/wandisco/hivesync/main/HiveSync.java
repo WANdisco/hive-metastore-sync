@@ -46,23 +46,24 @@ public class HiveSync {
 		String fs2 = Commands.getFsDefaultName(con2);
 		LOG.info("Source file system: " + fs1);
 		LOG.info("Destination file system: " + fs2);
-		
-		for (String db: dbList1) {
+
+		for (String db : dbList1) {
 			LOG.info("Syncing database: " + db);
-			if (dbList2.contains(db)) {
-				syncDatabase(db, fs1, fs2);
-			} else {
-				LOG.warn("destination host doesn't have database '" + db + "', ignored");
+			if (!dbList2.contains(db)) {
+				createDatabase(con2, db);
 			}
+			syncDatabase(db, fs1, fs2);
 		}
+	}
+
+	private void createDatabase(Connection con, String db) throws Exception {
+		LOG.info("Create database: " + db);
+		Commands.createDatabase(con, db);
 	}
 
 	private void syncDatabase(String database, String fs1, String fs2) throws Exception {
 		LOG.trace("Collect table information");
-		
-//		Commands.useDatabase(con1, database);
-//		Commands.useDatabase(con2, database);
-		
+
 		List<TableInfo> srcTables = Commands.getTables(con1, database);
 		List<TableInfo> dstTables = Commands.getTables(con2, database);
 
