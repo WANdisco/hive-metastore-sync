@@ -36,7 +36,7 @@ To run hive-metastore-sync from shell:
 ```
 
 ##Configuration
-Log4j2 configuration is stored in <install-dir>/conf/log4j2.xml
+Log4j2 configuration is stored in ```<install-dir>/conf/log4j2.xml```
 The default configuration file produces log file ```/tmp/hive-metastore-sync.txt```
 
 ## Creating test boxes with vagrant-lxc
