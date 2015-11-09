@@ -8,4 +8,4 @@ fi
 
 SCRIPT_HOME="$(cd `dirname $0`; pwd)"
 JAR_NAME="hive-metastore-sync-0.0.1.jar"
-exec $RUNNER -cp $CLASSPATH:$SCRIPT_HOME/../conf:$SCRIPT_HOME/../lib/$JAR_NAME com.wandisco.hivesync.main.Main $*
+exec $RUNNER -cp $CLASSPATH:$SCRIPT_HOME/../conf:$SCRIPT_HOME/../lib/$JAR_NAME com.wandisco.hivesync.main.Main "$@"

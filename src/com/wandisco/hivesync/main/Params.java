@@ -17,28 +17,30 @@ public class Params {
 	@Parameter(names = { "-?", "--help" }, description = "Show help", help = true)
 	private Boolean help;
 
-	@Parameter(names = "-src", description = "Connection string ('hiveserver' and 'hiveserver2' can be used as default connection string for the corresponding services)", required = true)
+	@Parameter(names = { "-s",
+			"--src-url" }, description = "Connection string ('hiveserver' and 'hiveserver2' can be used as default connection string for the corresponding services)", required = true)
 	private String src;
 
-	@Parameter(names = "-srcUser", description = "User")
+	@Parameter(names = { "-u", "--src-user" }, description = "User")
 	private String srcUser;
 
-	@Parameter(names = "-srcPass", description = "Password")
+	@Parameter(names = { "-p", "--src-password" }, description = "Password")
 	private String srcPass;
 
-	@Parameter(names = "-dst", description = "Connection string ('hiveserver' and 'hiveserver2' can be used as default connection string for the corresponding services)", required = true)
+	@Parameter(names = { "-d",
+			"--dst-url" }, description = "Connection string ('hiveserver' and 'hiveserver2' can be used as default connection string for the corresponding services)", required = true)
 	private String dst;
 
-	@Parameter(names = "-dstUser", description = "User")
+	@Parameter(names = { "-v", "--dst-user" }, description = "User")
 	private String dstUser;
 
-	@Parameter(names = "-dstPass", description = "Password")
+	@Parameter(names = { "-q", "--dst-password" }, description = "Password")
 	private String dstPass;
 
-	@Parameter(names = "-database", description = "Database(s), comma-separated list with wildcards")
+	@Parameter(names = { "-b", "--database" }, description = "Database(s), comma-separated list with wildcards")
 	private List<String> databases = new ArrayList<>(Arrays.asList("default"));
 
-	@Parameter(names = "-dryRun", description = "Don't run, but output commands to the specified file")
+	@Parameter(names = { "-n", "--dry-run" }, description = "Don't run, but output commands to the specified file")
 	private String dryRunFile = null;
 
 	public Boolean getHelp() {
