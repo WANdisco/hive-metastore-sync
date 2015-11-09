@@ -1,0 +1,28 @@
+<component>
+	<fileSets>
+		<!-- Adds startup scripts to the bin directory -->
+		<fileSet>
+			<directory>${project.build.scriptSourceDirectory}</directory>
+			<outputDirectory>bin/</outputDirectory>
+			<includes>
+				<include>hivesync</include>
+			</includes>
+		</fileSet>
+		<!-- adds jar package to the lib -->
+		<fileSet>
+			<directory>${project.build.directory}</directory>
+			<outputDirectory>lib/</outputDirectory>
+			<includes>
+				<include>hive-metastore-sync*.jar</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+	<!-- add log4j2.xml to the conf/log4j2.xml.default -->
+	<files>
+		<file>
+			<source>${basedir}/src/main/resources/log4j2.xml</source>
+			<outputDirectory>conf/</outputDirectory>
+			<destName>log4j2.xml.default</destName>
+		</file>
+	</files>
+</component>

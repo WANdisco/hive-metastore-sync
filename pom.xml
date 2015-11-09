@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>hive-metastore-sync</groupId>
 	<artifactId>hive-metastore-sync</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
@@ -61,7 +61,7 @@
 						<descriptor>src/main/assembly/assembly-zip.xml</descriptor>
 					</descriptors>
 				</configuration>
-				<executions>
+ 				<executions>
 					<execution>
 						<id>assembly</id>
 						<phase>package</phase>

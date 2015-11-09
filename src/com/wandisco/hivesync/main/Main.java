@@ -25,8 +25,11 @@ public class Main {
 		}
 
 		// Delete dryRun file
-		Commands.setDryRunFile(p.getDryRunFile());
-		(new File(p.getDryRunFile())).delete();
+		String dryRunFile = p.getDryRunFile();
+		Commands.setDryRunFile(dryRunFile);
+		if (dryRunFile != null) {
+			(new File(dryRunFile)).delete();
+		}
 
 		HiveSync hs = new HiveSync(p.getSrc(), p.getSrcUser(), p.getSrcPass(), p.getDst(), p.getDstUser(),
 				p.getDstPass(), p.getDatabases());

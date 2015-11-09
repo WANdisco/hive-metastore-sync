@@ -1,29 +1,14 @@
-<assembly>
-    <id>dist</id>
-    <formats>
-        <format>zip</format>
-    </formats>
+<assembly
+	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 http://maven.apache.org/xsd/assembly-1.1.3.xsd">
+	<id>dist</id>
+	<formats>
+		<format>zip</format>
+	</formats>
 
-    <fileSets>
-        <!--
-           Adds startup scripts to the root directory of zip package. The startup
-           scripts are located to src/main/scripts directory as stated by Maven
-           conventions.
-       -->
-        <fileSet>
-            <directory>${project.build.scriptSourceDirectory}</directory>
-            <outputDirectory></outputDirectory>
-            <includes>
-                <include>hivesync</include>
-            </includes>
-        </fileSet>
-        <!-- adds jar package to the root directory of zip package -->
-        <fileSet>
-            <directory>${project.build.directory}</directory>
-            <outputDirectory></outputDirectory>
-            <includes>
-                <include>hive-metastore-sync*.jar</include>
-            </includes>
-        </fileSet>
-    </fileSets>
+	<componentDescriptors>
+		<componentDescriptor>src/main/assembly/assembly-common.xml</componentDescriptor>
+	</componentDescriptors>
+
 </assembly>
