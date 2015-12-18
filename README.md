@@ -13,7 +13,7 @@ Maven will produce two results:
 2. zip archive ```target/hive-metastore-sync-<version>.zip```
 
 ## How to test?
-* Create two single-node clusters, expected host names: box1 & box2
+* Create two single-node clusters, expected host names: box1.lxc & box2.lxc
 * Install hadoop and hive on each one
 * Run the tests:
 
@@ -42,14 +42,14 @@ The default configuration file produces log file ```/tmp/hive-metastore-sync.txt
 ## Creating test boxes with vagrant-lxc
 
 To simplify the testing process, there is a vagrant-lxc template which could be used to create box1 and box2.
-You have to install vagrant (https://www.vagrantup.com) and vagrant-lxc plugin (https://github.com/fgrehm/vagrant-lxc) to use it. Then run the following commands:
+You have to install lxc, vagrant (https://www.vagrantup.com) and vagrant-lxc plugin (https://github.com/fgrehm/vagrant-lxc) to use it. Then run the following commands:
 
 ```
 cd vagrant/lxc
 vagrant up
 ```
 
-This command creates and runs two containers: box1 and box2, both provisioned with hadoop and hive.
+This command creates and runs two containers: box1.lxc and box2.lxc, both provisioned with hadoop and hive.
 
 To remove created containers use ```destroy```:
 
