@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.hadoop.hive.metastore.api.FieldSchema;
+import org.apache.hadoop.hive.metastore.api.Partition;
+import org.apache.hadoop.hive.metastore.api.Table;
+
 /**
  * Utility class
  * 
@@ -54,5 +58,18 @@ public class Tools {
 			Class.forName("org.apache.hadoop.hive.jdbc.HiveDriver");
 		return DriverManager.getConnection(connectionString, userName, password);
 	}
+	
+	public final static String buildPartitionSpec(Partition partition, Table table) {
+    StringBuilder partitionSpec = new StringBuilder();
+    List<String> values = partition.getValues();
+    partitionSpec.append("(");
+    int i = 0;
+    for (FieldSchema fs : table.getPartitionKeys()) {
+      partitionSpec.append(fs.getName()).append('=').append(values.get(i++)).append(',');
+    }
+    partitionSpec.append(")");
+    return partitionSpec.toString();
+  }
+
 
 }
