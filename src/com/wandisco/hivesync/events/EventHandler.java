@@ -27,7 +27,7 @@ public class EventHandler extends Thread {
   }
 
   public void run() {
-    running = true;
+    running = true; //xxx
 
     while (running) {
       ListenerEvent e = EventsQueue.tableEvents.poll();
