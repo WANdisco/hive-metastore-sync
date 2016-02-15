@@ -61,7 +61,7 @@
 						<descriptor>src/main/assembly/assembly-zip.xml</descriptor>
 					</descriptors>
 				</configuration>
- 				<executions>
+				<executions>
 					<execution>
 						<id>assembly</id>
 						<phase>package</phase>
@@ -134,6 +134,11 @@
 			<groupId>com.hierynomus</groupId>
 			<artifactId>sshj</artifactId>
 			<version>0.14.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>1.19</version>
 		</dependency>
 	</dependencies>
 	<repositories>
