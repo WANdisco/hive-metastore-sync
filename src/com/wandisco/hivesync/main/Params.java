@@ -34,8 +34,11 @@ public class Params {
 	@Parameter(names = { "-v", "--dst-user" }, description = "User")
 	private String dstUser;
 
-	@Parameter(names = { "-q", "--dst-password" }, description = "Password")
-	private String dstPass;
+  @Parameter(names = { "-q", "--dst-password" }, description = "Password")
+  private String dstPass;
+
+  @Parameter(names = { "-port" }, description = "Port")
+  private String port;
 
 	@Parameter(names = { "-b", "--database" }, description = "Database(s), comma-separated list with wildcards")
 	private List<String> databases = new ArrayList<>(Arrays.asList("default"));
@@ -77,6 +80,10 @@ public class Params {
 
 	public String getDryRunFile() {
 		return dryRunFile;
+	}
+	
+	public String getPort() {
+	  return port;
 	}
 
 }
