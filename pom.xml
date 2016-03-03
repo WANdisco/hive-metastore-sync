@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>hive-metastore-sync</groupId>
-	<artifactId>hive-metastore-sync</artifactId>
+	<artifactId>hive-metastore-replication-listener</artifactId>
 	<version>0.0.1</version>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -38,16 +38,6 @@
 							</excludes>
 						</filter>
 					</filters>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.19</version>
-				<configuration>
-					<suiteXmlFiles>
-						<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
-					</suiteXmlFiles>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -94,11 +84,13 @@
 		</plugins>
 	</build>
 	<dependencies>
-		<dependency>
-			<groupId>com.beust</groupId>
-			<artifactId>jcommander</artifactId>
-			<version>1.35</version>
-		</dependency>
+		<!-- dependency> <groupId>org.glassfish.jersey.core</groupId> <artifactId>jersey-server</artifactId> 
+			<version>2.7</version> </dependency> <dependency> <groupId>org.glassfish.jersey.containers</groupId> 
+			<artifactId>jersey-container-servlet-core</artifactId> <version>2.7</version> 
+			</dependency> <dependency> <groupId>org.glassfish.jersey.containers</groupId> 
+			<artifactId>jersey-container-jetty-http</artifactId> <version>2.7</version> 
+			</dependency> <dependency> <groupId>com.beust</groupId> <artifactId>jcommander</artifactId> 
+			<version>1.35</version> </dependency -->
 		<dependency>
 			<groupId>org.apache.hive</groupId>
 			<artifactId>hive-jdbc</artifactId>
@@ -112,7 +104,7 @@
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-common</artifactId>
-			<version>2.3.0</version>
+			<version>2.6.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
@@ -124,27 +116,23 @@
 			<artifactId>log4j-core</artifactId>
 			<version>2.4.1</version>
 		</dependency>
+		<!-- dependency> <groupId>org.eclipse.jetty</groupId> <artifactId>jetty-server</artifactId> 
+			<version>9.2.3.v20140905</version> </dependency> <dependency> <groupId>org.eclipse.jetty</groupId> 
+			<artifactId>jetty-servlet</artifactId> <version>9.2.3.v20140905</version> 
+			</dependency> <dependency> <groupId>org.glassfish.jersey.media</groupId> 
+			<artifactId>jersey-media-moxy</artifactId> <version>2.7</version> </dependency -->
 		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>6.9.4</version>
-			<scope>compile</scope>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast</artifactId>
+			<version>3.5.2</version>
 		</dependency>
 		<dependency>
-			<groupId>com.hierynomus</groupId>
-			<artifactId>sshj</artifactId>
-			<version>0.14.0</version>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast</artifactId>
+			<version>3.5.2</version>
+			<classifier>sources</classifier>
 		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-server</artifactId>
-			<version>1.19</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.jersey.containers</groupId>
-			<artifactId>jersey-container-grizzly2-http</artifactId>
-			<version>2.22.1</version>
-		</dependency>
+
 	</dependencies>
 	<repositories>
 		<repository>
