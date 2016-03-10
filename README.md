@@ -45,16 +45,16 @@ To configure secure Hive sync, you must configure cross realm support for Kerber
 
 ###Kerberos
 
-1. Create krbtgt principals for the two realms. For example, if you have two realms called SRC.COM and DST.COM, then you
+* Create krbtgt principals for the two realms. For example, if you have two realms called SRC.COM and DST.COM, then you
 need to add the following principals: krbtgt/SRC.COM@DST.COM and krbtgt/DST.COM@SRC.COM. Add these two principals at both realms.
 Note that passwords should be the same for both realms:
-
+```
 kadmin: addprinc krbtgt/SRC.COM@DST.COM
 kadmin: addprinc krbtgt/DST.COM@SRC.COM
-
-2. Add RULEs for creating shortnames in the Hadoop. To do this, add/modify the hadoop.security.auth_to_local property in the
+```
+* Add RULEs for creating shortnames in the Hadoop. To do this, add/modify the hadoop.security.auth_to_local property in the
 core-site.xml file in the destination cluster. For example, to add support for the hdfs/SRC.COM principal:
-
+```
 <property>
   <name>hadoop.security.auth_to_local</name>
   <value>
@@ -63,12 +63,12 @@ RULE:[1:$1@$0](hdfs@SRC.COM)s/.*/hdfs/
 DEFAULT
   </value>
 </property>
-
-3. Configure destination realm on the source cluster:
-
+```
+* Configure destination realm on the source cluster:
+```
 /etc/krb5.conf
 
-[reals]
+[realms]
 ...
   DST.COM = {
     admin_server = admin_server.dst.com
@@ -78,16 +78,22 @@ DEFAULT
 [domain_realm]
 .dst.com = DST.COM
 dst.com = DST.COM
-
-4. How to check that kerberos has been configured correctly:
-
+```
+* How to check that kerberos has been configured correctly:
 On the destination cluster check that principal from the source cluster could be mapped correctly:
+```
 $ hadoop org.apache.hadoop.security.HadoopKerberosName hdfs@SRC.COM
-
+```
 On the source cluster run beeline and simple query (hive principal is used there):
+```
 $ beeline
 beeline> !connect jdbc:hive2://hiveserver.dst.com:10000/default;principal=hive/dst.com@DST.COM
 beeline> show tables;
+```
+* How to run:
+```
+./hive-metastore-sync-0.0.1/bin/hivesync -d "jdbc:hive2://hiveserver.dst.com:10000/default;principal=hive/hiveserver.dst.com@DST.COM" -s "jdbc:hive2://hiveserver.src.com:10000/default;principal=hive/hiveserver.src.com@SRC.COM"
+```
 
 ## Creating test boxes with vagrant-lxc
 
