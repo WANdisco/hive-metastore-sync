@@ -27,6 +27,22 @@ Test suite starts/restarts hadoop and hive every time you run it. You can cut th
 mvn test -DskipStart=true
 ````
 
+To simplify the testing process, there is a vagrant-lxc template which could be used to create box1 and box2.
+You have to install lxc, vagrant (https://www.vagrantup.com) and vagrant-lxc plugin (https://github.com/fgrehm/vagrant-lxc) to use it. Then run the following commands:
+
+```
+cd vagrant/lxc
+vagrant up
+```
+
+This command creates and runs two containers: box1.lxc and box2.lxc, both provisioned with hadoop and hive.
+
+To remove created containers use ```destroy```:
+
+```
+vagrant destroy
+```
+
 ##Running hive-metastore-sync
 
 To run hive-metastore-sync from shell:
@@ -43,7 +59,7 @@ The default configuration file produces log file ```/tmp/hive-metastore-sync.txt
 
 To configure secure Hive sync, you must configure cross realm support for Kerberos and Hadoop
 
-###Kerberos
+####Kerberos & Hadoop
 
 * Create krbtgt principals for the two realms. For example, if you have two realms called SRC.COM and DST.COM, then you
 need to add the following principals: krbtgt/SRC.COM@DST.COM and krbtgt/DST.COM@SRC.COM. Add these two principals at both realms.
@@ -79,6 +95,7 @@ DEFAULT
 .dst.com = DST.COM
 dst.com = DST.COM
 ```
+####Check configuration
 * How to check that kerberos has been configured correctly:
 On the destination cluster check that principal from the source cluster could be mapped correctly:
 ```
@@ -90,25 +107,9 @@ $ beeline
 beeline> !connect jdbc:hive2://hiveserver.dst.com:10000/default;principal=hive/dst.com@DST.COM
 beeline> show tables;
 ```
+####Start sync
 * How to run:
 ```
 ./hive-metastore-sync-0.0.1/bin/hivesync -d "jdbc:hive2://hiveserver.dst.com:10000/default;principal=hive/hiveserver.dst.com@DST.COM" -s "jdbc:hive2://hiveserver.src.com:10000/default;principal=hive/hiveserver.src.com@SRC.COM"
 ```
 
-## Creating test boxes with vagrant-lxc
-
-To simplify the testing process, there is a vagrant-lxc template which could be used to create box1 and box2.
-You have to install lxc, vagrant (https://www.vagrantup.com) and vagrant-lxc plugin (https://github.com/fgrehm/vagrant-lxc) to use it. Then run the following commands:
-
-```
-cd vagrant/lxc
-vagrant up
-```
-
-This command creates and runs two containers: box1.lxc and box2.lxc, both provisioned with hadoop and hive.
-
-To remove created containers use ```destroy```:
-
-```
-vagrant destroy
-```
