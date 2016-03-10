@@ -112,4 +112,4 @@ beeline> show tables;
 ```
 <install-dir>/bin/hivesync --dry-run output.txt --dst-url "jdbc:hive2://hiveserver.dst.com:10000/default;principal=hive/hiveserver.dst.com@DST.COM" --src-url "jdbc:hive2://hiveserver.src.com:10000/default;principal=hive/hiveserver.src.com@SRC.COM"
 ```
-* Review the ```output.txt``` and run the same command without ```--dry-run``` parameter to start syncing.
+* Review generated ```output.txt``` file and run the same command again, but without ```--dry-run``` parameter to start syncing.
