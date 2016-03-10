@@ -108,8 +108,8 @@ beeline> !connect jdbc:hive2://hiveserver.dst.com:10000/default;principal=hive/d
 beeline> show tables;
 ```
 ####Start sync
-* How to run:
+* Use ```--dry-run``` to generate output.txt with hive commands:
 ```
-./hive-metastore-sync-0.0.1/bin/hivesync -d "jdbc:hive2://hiveserver.dst.com:10000/default;principal=hive/hiveserver.dst.com@DST.COM" -s "jdbc:hive2://hiveserver.src.com:10000/default;principal=hive/hiveserver.src.com@SRC.COM"
+<install-dir>/bin/hivesync --dry-run output.txt --dst-url "jdbc:hive2://hiveserver.dst.com:10000/default;principal=hive/hiveserver.dst.com@DST.COM" --src-url "jdbc:hive2://hiveserver.src.com:10000/default;principal=hive/hiveserver.src.com@SRC.COM"
 ```
-
+* Review the ```output.txt``` and run the same command without ```--dry-run``` parameter to start syncing.
