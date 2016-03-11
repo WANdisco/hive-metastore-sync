@@ -68,9 +68,10 @@ Note that passwords should be the same for both realms:
 kadmin: addprinc krbtgt/SRC.COM@DST.COM
 kadmin: addprinc krbtgt/DST.COM@SRC.COM
 ```
-* Add RULEs for creating shortnames in the Hadoop. To do this, add/modify the hadoop.security.auth_to_local property in the
-core-site.xml file in the destination cluster. For example, to add support for the hdfs/SRC.COM principal:
+* You would need to add respective auth_to_local mapping for SRC cluster principals into your destination cluster Hadoop configuration core-site.xml file. For example, to add maopping for the hdfs/SRC.COM principal into destination cluster:
 ```
+core-site.xml
+
 <property>
   <name>hadoop.security.auth_to_local</name>
   <value>
@@ -80,7 +81,7 @@ DEFAULT
   </value>
 </property>
 ```
-* Configure destination realm on the source cluster:
+* Add destination realm into /etc/krb5.conf on source cluster:
 ```
 /etc/krb5.conf
 
@@ -95,6 +96,23 @@ DEFAULT
 .dst.com = DST.COM
 dst.com = DST.COM
 ```
+
+* Add source realm into /etc/krb5.conf on destination cluster:
+```
+/etc/krb5.conf
+
+[realms]
+...
+  SRC.COM = {
+    admin_server = admin_server.src.com
+    kdc = kdc_server.src.com
+  }
+
+[domain_realm]
+.src.com = SRC.COM
+src.com = SRC.COM
+```
+
 ####Check configuration
 * How to check that kerberos has been configured correctly:
 On the destination cluster check that principal from the source cluster could be mapped correctly:
